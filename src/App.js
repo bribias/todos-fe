@@ -4,7 +4,6 @@ import {
   Switch,
   Route,
   Link,
-  useParams,
   Redirect
 } from 'react-router-dom';
 import HomePage from './HomePage';
