@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { login } from './fetch-utils';
 
 export default class LoginPage extends Component {
 
-    stat = {
+    state = {
         email: '',
         password: ''
     }
 
     handleSubmit = async e => {
         e.preventDefault();
-        const token = await LoginPage(this.state.email, this.state.password);
+        const token = await login(this.state.email, this.state.password);
         this.props.login(token)
         this.props.history.push('/todos')
     }
