@@ -32,7 +32,7 @@ export default class LoginPage extends Component {
                     </label>
                     <label>
                         Password
-                        <input type='email' onChange={this.handlePasswordChange} />
+                        <input type='password' onChange={this.handlePasswordChange} />
                     </label>
                     <button>Log In</button>
                 </form>

@@ -1,4 +1,3 @@
-import { func } from 'prop-types';
 import request from 'superagent';
 
 const URL = 'https://vast-badlands-41470.herokuapp.com';
