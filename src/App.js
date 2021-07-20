@@ -12,16 +12,16 @@ import SignupPage from './SignupPage';
 import TodosPage from './TodosPage';
 import './App.css';
 
-const TOKEN_KEY = 'TOKEN';
+const TOKEN = 'TOKEN';
 
 export default class App extends Component {
   state = {
-    token: localStorage.getItem(TOKEN_KEY)
+    token: localStorage.getItem(TOKEN)
   }
 
-  longin = (userToken) => {
+  login = (userToken) => {
     this.setState({ token: userToken })
-    localStorage.setItem(TOKEN_KEY, userToken)
+    localStorage.setItem(TOKEN, userToken)
   }
 
   logout = () => {
@@ -41,18 +41,33 @@ export default class App extends Component {
             <button onClick={this.logout}>Logout</button>
           </div>
           <Switch>
-            <Route path='/' exact render={(routerProps) => <HomePage {...routerProps} />} />
-            <Route path='/login' exact render={(routerProps) => <LoginPage {...routerProps} />} />
-            <Route path='/signup' exact render={(routerProps) => <SignupPage {...routerProps} />} />
-            <Route path='/todos' exact render={(routerProps) =>
-            this.state.token
-            ? <TodosPage {...routerProps} token={this.state.token} />
-          : <Redirect to='/' />
-    }
-              />
+            <Route
+              path='/'
+              exact
+              render={(routerProps) => <HomePage {...routerProps} />}
+            />
+            <Route
+              path='/login'
+              exact
+              render={(routerProps) => <LoginPage login={this.login} {...routerProps} />}
+            />
+            <Route
+              path='/signup'
+              exact
+              render={(routerProps) => <SignupPage login={this.login} {...routerProps} />}
+            />
+            <Route
+              path='/todos'
+              exact
+              render={(routerProps) =>
+                this.state.token
+                  ? <TodosPage {...routerProps} token={this.state.token} />
+                  : <Redirect to='/' />
+              }
+            />
           </Switch>
         </div>
       </Router>
-    )
+    );
   }
 }

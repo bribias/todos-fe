@@ -8,18 +8,19 @@ export default class LoginPage extends Component {
         password: ''
     }
 
-    handleSubmit = async e => {
+    handleSubmit = async (e) => {
         e.preventDefault();
         const token = await login(this.state.email, this.state.password);
+
         this.props.login(token)
         this.props.history.push('/todos')
     }
 
-    handleEmailChange = e => {
+    handleEmailChange = (e) => {
         this.setState({ email: e.target.value });
     }
 
-    handlePasswordChange = e => {
+    handlePasswordChange = (e)=> {
         this.setState({ password: e.target.value });
     }
 
