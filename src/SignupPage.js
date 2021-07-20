@@ -10,23 +10,22 @@ export default class SignupPage extends Component {
     handleSubmit = async e => {
 
         e.preventDefault();
-
         const token = await signup(this.state.email, this.state.password);
         
         this.props.login(token)
         this.props.history.push('/todos')
     }
 
-    handleEmailChange = e => {
+    handleEmailChange = (e) => {
         this.setState({ email: e.target.value });
     }
 
-    handlePasswordChange = e => {
+    handlePasswordChange = (e) => {
         this.setState({ password: e.target.value });
     }
     render() {
         return (
-            <div>
+            <div>Sign up:
                 <form onSubmit={this.handleSubmit}>
                     <label>Email
                         <input type='email' onChange={this.handleEmailChange} />
@@ -35,7 +34,7 @@ export default class SignupPage extends Component {
                         Password
                         <input type='password' onChange={this.handlePasswordChange} />
                     </label>
-                    <button>Sign Up</button>
+                    <button>Create Account</button>
                 </form>
             </div>
         )

@@ -7,7 +7,7 @@ export async function signup(email, password) {
         .post(`${URL}/auth/signup`)
         .send({
             email: email,
-            password: password,
+            password: password
         })
     return data.body.token;
 }
@@ -17,7 +17,7 @@ export async function login(email, password) {
         .post(`${URL}/auth/signin`)
         .send({
             email: email,
-            password: password,
+            password: password
         })
     return data.body.token;
 }
@@ -29,13 +29,14 @@ export async function getTodos(token) {
     return data.body;
 }
 
-export async function addTodos(todo, token) {
+export async function addTodos(name, token) {
     const data = await request
         .post(`${URL}/api/todos`)
         .send({
-            todo: todo,
-            completed: false,
+            todo: name,
+            completed: false
         })
+    .set('Authorization', token)
     return data.body;
 }
 
